@@ -1,0 +1,187 @@
+fileFormatVersion: 2
+guid: cb886904ed479a24884e6b8221fd5a52
+timeCreated: 1464292675
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Fill
+    21300002: Bar
+    21300004: Buttons_Disable
+    21300006: Buttons_Pressed
+    21300008: Buttons_Highlight
+    21300010: Buttons_Normal
+    21300012: Buttons_Quit_Normal
+    21300014: Buttons_Quit_Pressed
+    21300016: Buttons_Tick_Normal
+    21300018: Buttons_Tick_Pressed
+    21300020: Buttons_Check_True
+    21300022: Buttons_Check_False
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Fill
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 18
+        width: 125
+        height: 11
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Bar
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 35
+        width: 130
+        height: 17
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Buttons_Disable
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 63
+        width: 85
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Buttons_Pressed
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 63
+        width: 85
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Buttons_Highlight
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 63
+        width: 85
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Buttons_Normal
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 63
+        width: 85
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Buttons_Quit_Normal
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 16
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Buttons_Quit_Pressed
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 16
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Buttons_Tick_Normal
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 16
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Buttons_Tick_Pressed
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 16
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Buttons_Check_True
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 16
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Buttons_Check_False
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 16
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
