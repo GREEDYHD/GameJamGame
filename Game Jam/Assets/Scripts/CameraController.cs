@@ -9,9 +9,11 @@ public class CameraController : MonoBehaviour {
 	float cameraMoveSpeed;
 	[SerializeField]
 	float cameraRotationSpeed;
-
-	Vector3 defaultCameraPos;
-	Vector3 defaultCameraRot;
+	
+	Vector3 defaultControllerPos;
+	Vector3 defaultControllerRot;
+	float defaultZoom;
+	public float focusZoom;
 
 	//Mouse stuff
 	private float mouseX;
@@ -22,17 +24,11 @@ public class CameraController : MonoBehaviour {
 	private int screenHeight = Screen.height;
 
 	//Zoom stuff
-	[SerializeField]
-	private float cameraSpeed = 10f;
-
-	[SerializeField]
-	private float cameraZoomSpeed = 30f;
-
-	[SerializeField]
-	private float cameraZoomIn = 4f;
-
-	[SerializeField]
-	private float cameraZoomOut = 10f;
+	public float cameraSpeed;
+	public float cameraZoomSpeed;
+	public float cameraZoomIn;
+	public float cameraZoomOut;
+	
 
 	//Camera border
 	public float mapBorderForward = 5f;
@@ -45,9 +41,7 @@ public class CameraController : MonoBehaviour {
 	void Start () 
 	{
 		myCamera = GetComponentInChildren<Camera>();
-		defaultCameraPos = myCamera.transform.position;
-		defaultCameraRot = myCamera.transform.eulerAngles;
-
+		defaultZoom = Vector3.Distance(transform.position, myCamera.transform.position);
 	}
 	
 	// Update is called once per frame
@@ -104,8 +98,56 @@ public class CameraController : MonoBehaviour {
 //		{
 //			transform.Translate(Vector3.back * cameraMoveSpeed, Space.World);
 //		}
+
 		//Zoom
-		myCamera.transform.localPosition += Vector3.back * cameraMoveSpeed;
+		if (Input.GetKey (KeyCode.E)) {
+
+		}
+
+		//Mouse wheel scroll in//
+		if(Input.GetAxis("Mouse ScrollWheel") > 0)
+		{
+			Vector3 camDown = transform.position - myCamera.transform.position;// new Vector3(0, 1, 0);
+			if(camDown.magnitude > cameraZoomIn)
+			{
+				myCamera.transform.Translate(camDown.normalized * cameraZoomSpeed * Time.deltaTime, Space.World);
+				if (transform.position.y < cameraZoomIn)
+				{
+					Vector3 camZoomInMax = transform.position;
+					camZoomInMax.y = cameraZoomIn;
+					//transform.position = camZoomInMax;
+				}
+			}
+		}
+		
+		//Mouse wheel scroll out//
+		if(Input.GetAxis("Mouse ScrollWheel") < 0)
+		{
+			Vector3 camUp = myCamera.transform.position - transform.position;// new Vector3(0, 1, 0);
+			if(camUp.magnitude < cameraZoomOut)
+			{
+				myCamera.transform.Translate(camUp.normalized * cameraZoomSpeed * Time.deltaTime, Space.World);
+				if (transform.position.y > cameraZoomOut)
+				{
+					Vector3 camZoomOutMax = transform.position;
+					camZoomOutMax.y = cameraZoomOut;
+					//transform.position = camZoomOutMax;
+				}
+			}
+		}
+
+		//Reset camera position
+		if (Input.GetKeyDown (KeyCode.C)) 
+		{
+			transform.localPosition = Vector3.zero;
+			transform.eulerAngles = Vector3.zero;
+			myCamera.transform.position = transform.position + ((myCamera.transform.position - transform.position).normalized * defaultZoom);
+		}
 	}
-	
+
+	public void FocusOn(GameObject selectedUnit)
+	{
+		transform.localPosition = selectedUnit.transform.position;
+		myCamera.transform.position = transform.position + ((myCamera.transform.position - transform.position).normalized * focusZoom);
+	}
 }
