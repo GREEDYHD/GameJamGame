@@ -6,8 +6,11 @@ public class ResourceNode : BaseObject
 	[SerializeField]
 	Resource resourceType;
 
-	public ResourceNode(Resource resourceType, string name, int health, Vector2 position) : base(name, health, position)
+	protected void Init(Resource resourceType, string name, int health, Vector2 position)
 	{
+		base.Init(name, health, position);
 		this.resourceType = resourceType;
+
+		objectCollider = GetComponent<SphereCollider> ();
 	}
 }

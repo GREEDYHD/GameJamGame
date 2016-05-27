@@ -9,9 +9,19 @@ public class Villager : Unit
 	[SerializeField]
 	protected float gatherRate;
 
-	public Villager(int buildSkill, float gatherRate, int attackDamage, float attackSpeed, float movementSpeed, string name, int health, Vector2 position) : base(attackDamage, attackSpeed, movementSpeed, name, health, position)
+	public void Init(int buildSkill, float gatherRate, int attackDamage, float attackSpeed, float movementSpeed, string name, int health, Vector3 position)
 	{
+		base.Init (attackDamage, attackSpeed, movementSpeed, name, health, position);
 		this.buildSkill = buildSkill;
 		this.gatherRate = gatherRate;
+	}
+
+	protected void Update()
+	{
+		base.Update ();
+		if (GameManager.IsPaused)
+		{
+			
+		}
 	}
 }

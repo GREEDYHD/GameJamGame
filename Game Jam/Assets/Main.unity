@@ -336,6 +336,7 @@ GameObject:
   - 114: {fileID: 952875772}
   - 114: {fileID: 952875771}
   - 114: {fileID: 952875770}
+  - 114: {fileID: 952875774}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -398,6 +399,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!114 &952875774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 952875769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532ba4f51e8a104488e3da659a8a982c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  villagerGO: {fileID: 11460316, guid: caaec8f24a89d2f45a5fe69ad42fe167, type: 2}
 --- !u!1 &1061191741
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,8 +571,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCamera: {fileID: 0}
-  cameraMoveSpeed: 5
-  cameraRotationSpeed: 5
+  cameraMoveSpeed: 1
+  cameraRotationSpeed: 200
   cameraSpeed: 10
   cameraZoomSpeed: 30
   cameraZoomIn: 4
@@ -673,7 +686,7 @@ Canvas:
   serializedVersion: 2
   m_RenderMode: 1
   m_Camera: {fileID: 1718363648}
-  m_PlaneDistance: 100
+  m_PlaneDistance: 1
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -779,7 +792,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1718363644}
   m_LocalRotation: {x: .287230104, y: 0, z: 0, w: .957861662}
-  m_LocalPosition: {x: 0, y: 110.260002, z: -176.300003}
+  m_LocalPosition: {x: 0, y: 27.6000004, z: -65.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1100774139}

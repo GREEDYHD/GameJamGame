@@ -6,9 +6,9 @@ public class CameraController : MonoBehaviour {
 	[SerializeField]
 	Camera myCamera;
 	[SerializeField]
-	float cameraMoveSpeed = 5;
+	float cameraMoveSpeed;
 	[SerializeField]
-	float cameraRotationSpeed = 500;
+	float cameraRotationSpeed;
 
 	Vector3 defaultCameraPos;
 	Vector3 defaultCameraRot;
@@ -40,7 +40,6 @@ public class CameraController : MonoBehaviour {
 	public float mapBorderLeft = 5f;
 	public float mapBorderRight = 5f;
 
-	//
 
 	// Use this for initialization
 	void Start () 
@@ -48,6 +47,7 @@ public class CameraController : MonoBehaviour {
 		myCamera = GetComponentInChildren<Camera>();
 		defaultCameraPos = myCamera.transform.position;
 		defaultCameraRot = myCamera.transform.eulerAngles;
+
 	}
 	
 	// Update is called once per frame
@@ -77,34 +77,35 @@ public class CameraController : MonoBehaviour {
 		{
 			mouseX = Input.GetAxis("Mouse X");
 			mouseY = Input.GetAxis("Mouse Y");
-			transform.eulerAngles += new Vector3(mouseY, mouseX, 0)* Time.deltaTime * cameraRotationSpeed;
+			//myCamera.transform.RotateAround(this.transform.position, new Vector3 (0, mouseX, 0), Time.deltaTime * cameraRotationSpeed);
+			transform.eulerAngles += new  Vector3 (0, mouseX, 0) * Time.deltaTime * cameraRotationSpeed;
 		}
 
 		//Edge scroll right
-		if (Input.mousePosition.x >= screenWidth * 0.02f) 
-		{
-			transform.Translate(Vector3.right * cameraMoveSpeed, Space.World);
-		}
-
-		//Edge scroll left
-		if (Input.mousePosition.x <= screenWidth * 0.98f) 
-		{
-			transform.Translate(Vector3.left * cameraMoveSpeed, Space.World);
-		}
-
-		//Edge scroll up
-		if (Input.mousePosition.y >= screenHeight * 0.02f) 
-		{
-			transform.Translate(Vector3.forward * cameraMoveSpeed, Space.World);
-		}
-
-		//Edge scroll down
-		if (Input.mousePosition.y <= screenHeight * 0.98f) 
-		{
-			transform.Translate(Vector3.back * cameraMoveSpeed, Space.World);
-		}
-
-
+//		if (Input.mousePosition.x >= screenWidth * 0.02f) 
+//		{
+//			transform.Translate(Vector3.right * cameraMoveSpeed, Space.World);
+//		}
+//
+//		//Edge scroll left
+//		if (Input.mousePosition.x <= screenWidth * 0.98f) 
+//		{
+//			transform.Translate(Vector3.left * cameraMoveSpeed, Space.World);
+//		}
+//
+//		//Edge scroll up
+//		if (Input.mousePosition.y >= screenHeight * 0.02f) 
+//		{
+//			transform.Translate(Vector3.forward * cameraMoveSpeed, Space.World);
+//		}
+//
+//		//Edge scroll down
+//		if (Input.mousePosition.y <= screenHeight * 0.98f) 
+//		{
+//			transform.Translate(Vector3.back * cameraMoveSpeed, Space.World);
+//		}
+		//Zoom
+		myCamera.transform.localPosition += Vector3.back * cameraMoveSpeed;
 	}
 	
 }
