@@ -1,7 +1,1 @@
-﻿using UnityEngine;
-using System.Collections;
-
-public class Resource : MonoBehaviour
-{
-	protected enum resourceTypes { Wood, Iron, Gold, Food, Stone };
-}
+﻿public enum Resource { Wood, Iron, Gold, Food, Stone };

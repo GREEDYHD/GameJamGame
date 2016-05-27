@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum State { Idle, Moving, Gathering, Attacking }
+
 [RequireComponent (typeof (NavMeshAgent))]
 [RequireComponent (typeof (Rigidbody))]
 public class Unit : BaseObject 
@@ -17,6 +19,15 @@ public class Unit : BaseObject
 	public NavMeshAgent navAgent;
 
 	protected Rigidbody rigidBody;
+
+	[SerializeField]
+	protected State state;
+
+	[SerializeField]
+	protected State previousState;
+	
+	[SerializeField]
+	protected BaseObject targetObject;
 
 	protected void Init(int attackDamage, float attackSpeed, float movementSpeed, string name, int health, Vector2 position)
 	{
@@ -36,6 +47,9 @@ public class Unit : BaseObject
 		//RigidBody
 		rigidBody = GetComponent<Rigidbody> ();
 		rigidBody.isKinematic = true;
+
+		previousState = State.Idle;
+		state = State.Idle;
 	}
 
 	protected void Update()
@@ -46,13 +60,90 @@ public class Unit : BaseObject
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			if (Physics.Raycast(ray, out hit))
 			{
-					navAgent.SetDestination(hit.point);
+				state = State.Moving;
 			}
 		}
+
+		if (Input.GetMouseButtonDown(1))
+		{
+			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			if (Physics.Raycast(ray, out hit))
+			{
+				BaseObject hitObject = hit.collider.GetComponent<BaseObject>();
+
+				targetObject = hitObject;
+				MoveTo(targetObject);
+				
+//				switch(hitObject.CheckRelationship(teamID))
+//				{
+//					case Relationship.Hostile:
+//					{
+//						Attack();
+//						return;
+//					}
+//					case Relationship.Friendly:
+//					{
+//						FriendlyAction();
+//						return;
+//					}
+			}
+		}
+
+		if(GameManager.IsDebug)
+		{
+			Debug.DrawLine(transform.position,targetObject.gameObject.transform.position);
+		}
+
+		StateBehaviour();
 
 		if (GameManager.IsPaused)
 		{
 			
 		}
+	}
+
+	protected virtual void StateBehaviour()
+	{
+		switch (state)
+		{
+			case State.Idle:
+			{
+				//Play idle animation
+				return;
+			}
+			case State.Moving:
+			{
+				if(previousState != State.Moving)
+				{
+					MoveTo(targetObject);
+					previousState = State.Moving;
+				}
+				//Play moving animation
+				//Move towards target
+				return;
+			}
+			case State.Attacking:
+			{
+				//Attack
+				return;
+			}
+		}
+	}
+	
+	//call an action that this unit will perform on another BaseObject
+	void MoveTo(BaseObject target)
+	{
+		state = State.Moving;
+		navAgent.SetDestination (target.transform.position);
+	}
+
+	void OnTriggerEnter(Collider collider)
+	{
+		CheckCollision (collider);
+	}
+
+	protected virtual void CheckCollision(Collider collider)
+	{
+
 	}
 }

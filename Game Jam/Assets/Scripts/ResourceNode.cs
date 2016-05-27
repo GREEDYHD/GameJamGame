@@ -6,11 +6,35 @@ public class ResourceNode : BaseObject
 	[SerializeField]
 	Resource resourceType;
 
-	protected void Init(Resource resourceType, string name, int health, Vector2 position)
+	public Resource ResourceType
+	{
+		get { return resourceType; }
+	}
+
+	[SerializeField]
+	Inventory inventory;
+
+	public void Init(Resource resourceType, string name, int health, Vector3 position)
 	{
 		base.Init(name, health, position);
 		this.resourceType = resourceType;
-
-		objectCollider = GetComponent<SphereCollider> ();
+		inventory = GetComponent<Inventory> ();
+		inventory.Init (health);
+		inventory.AddResourceEntry (resourceType, health);
+		inventory.AddResource (resourceType, health);
+	}
+	
+	public void DepleteResource(int quantity)
+	{
+		inventory.RemoveResource (resourceType, quantity);
+//		if ()
+//		{
+//			Destroy(this.gameObject);
+//			//Totally depleted
+//		} 
+//		else 
+//		{
+//			//Particle effect
+//		}
 	}
 }
