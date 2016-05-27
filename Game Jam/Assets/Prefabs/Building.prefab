@@ -31,7 +31,7 @@ GameObject:
   - 4: {fileID: 482162}
   - 65: {fileID: 6518608}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -199,6 +199,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectHealth: 0
   isSelected: 0
+  buildingState: 0
+  isPlaced: 0
+  underConstruction: 0
+  buildingComplete: 0
 --- !u!208 &20848574
 NavMeshObstacle:
   m_ObjectHideFlags: 1

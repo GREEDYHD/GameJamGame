@@ -96,8 +96,13 @@ MonoBehaviour:
   attackSpeed: 10
   movementSpeed: 100
   navAgent: {fileID: 19505636}
+  state: 0
+  previousState: 0
+  targetObject: {fileID: 0}
   buildSkill: 10
   gatherRate: 10
+  gatherProgress: 0
+  resourceNode: {fileID: 0}
 --- !u!136 &13627144
 CapsuleCollider:
   m_ObjectHideFlags: 1

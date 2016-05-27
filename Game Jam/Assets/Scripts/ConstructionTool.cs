@@ -7,6 +7,7 @@ public class ConstructionTool : MonoBehaviour {
 	bool isBuilding = false;
 	int selctedBuilding = 0;
 	GameObject ghostBuilding;
+	GameObject newBuilding;
 	
 
 	// Update is called once per frame
@@ -55,7 +56,8 @@ public class ConstructionTool : MonoBehaviour {
 
 	public void PlaceBuilding(int buildingNumber, Vector3 placePosition)
 	{
-		Instantiate(availableBuildings[buildingNumber], placePosition, Quaternion.identity);
+		newBuilding = Instantiate(availableBuildings[buildingNumber], placePosition, Quaternion.identity)as GameObject;
+		newBuilding.GetComponent<Building>().isPlaced = true;
 	}
 
 }
