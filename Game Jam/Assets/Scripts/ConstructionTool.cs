@@ -8,7 +8,9 @@ public class ConstructionTool : MonoBehaviour {
 	int selctedBuilding = 0;
 	GameObject ghostBuilding;
 	GameObject newBuilding;
+	//LayerMask mask = LayerMask.GetMask("TerrainLayer");
 	
+
 
 	// Update is called once per frame
 	void Update () 
@@ -44,10 +46,10 @@ public class ConstructionTool : MonoBehaviour {
 			RaycastHit hit;
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			if (Physics.Raycast(ray, out hit))
-			{
-				ghostBuilding.transform.position = hit.point + new Vector3(0f,2.5f,0f);
-			}
-		}
+				{
+					ghostBuilding.transform.position = hit.point + new Vector3(0f,2.5f,0f);
+				}
+		}	
 	}
 
 	public void SelectBuilding(int buildingNumber)

@@ -43,7 +43,7 @@ public class EnvironmentBuilder : MonoBehaviour
 
 					Vector2 randomOffset = new Vector2(Random.Range(-3,3),Random.Range(-3,3));
 					GameObject newTree = Instantiate(GO,new Vector3(((j * (xBoundry/terrainWidth) - (xBoundry/2)) + randomOffset.x),0,((i * (yBoundry/terrainHeight) - (xBoundry/2))) + randomOffset.y),random) as GameObject;
-					newTree.transform.parent = this.transform.parent;
+					newTree.transform.parent = environmentalObjects;
 				}
 			}
 		}
