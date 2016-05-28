@@ -9,7 +9,9 @@ public class GameManager : MonoBehaviour
 
 	public Villager villagerGO;
 	public ResourceNode resourceNodeGO;
-	
+	public EnvironmentBuilder environmentBuilder;
+
+	public GameObject[] environmentArray;
 
 	public static GameManager Instance
 	{
@@ -35,11 +37,16 @@ public class GameManager : MonoBehaviour
 
 	void CreateGameObjects()
 	{
-		Instantiate(villagerGO);
-		villagerGO.Init (10, 10, 50, 10, 10, 100, "Villager", 100, new Vector3 (0, 1, 0));
+		environmentBuilder = GetComponent<EnvironmentBuilder> ();
 
-		Instantiate (resourceNodeGO);
-		resourceNodeGO.Init (Resource.Gold, "GoldMine", 1000, new Vector3 (15, 1, 0));
+		environmentBuilder.Init (100,100);
+		environmentBuilder.SpawnObject (environmentArray[0],10);
+
+		//Instantiate(villagerGO);
+		//villagerGO.Init (10, 10, 50, 10, 10, 100, "Villager", 100, new Vector3 (0, 1, 0));
+
+		//Instantiate (resourceNodeGO);
+		//resourceNodeGO.Init (Resource.Gold, "GoldMine", 1000, new Vector3 (15, 1, 0));
 		//Create resource nodes ect.
 		//Create a town center
 		//Create X villagers

@@ -4,7 +4,7 @@ using System.Collections;
 public class ConstructionTool : MonoBehaviour {
 
 	public GameObject[] availableBuildings;
-	bool isBuilding = false;
+	public bool isBuilding = false;
 	int selctedBuilding = 0;
 	GameObject ghostBuilding;
 	GameObject newBuilding;
@@ -15,6 +15,7 @@ public class ConstructionTool : MonoBehaviour {
 	{
 		if (Input.GetKeyDown (KeyCode.B)) 
 		{
+			isBuilding = !isBuilding;
 			if(ghostBuilding != null)
 			{
 				Destroy(ghostBuilding);
@@ -22,7 +23,7 @@ public class ConstructionTool : MonoBehaviour {
 
 			isBuilding = true;
 			ghostBuilding = Instantiate(availableBuildings[0], transform.position,Quaternion.identity) as GameObject;
-			Color alphaColor = new Color(0,1,0,0.5f);
+			Color alphaColor = new Color(0,0,1,0.5f);
 			ghostBuilding.GetComponent<MeshRenderer>().material.color = alphaColor;
 			
 		}

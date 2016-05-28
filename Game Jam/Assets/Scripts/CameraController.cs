@@ -22,9 +22,9 @@ public class CameraController : MonoBehaviour {
 	//Edge scrolling stuff
 	private int screenWidth = Screen.width;
 	private int screenHeight = Screen.height;
+	public bool edgeScrolling;
 
 	//Zoom stuff
-	public float cameraSpeed;
 	public float cameraZoomSpeed;
 	public float cameraZoomIn;
 	public float cameraZoomOut;
@@ -67,37 +67,39 @@ public class CameraController : MonoBehaviour {
 			transform.Translate(Vector3.right * cameraMoveSpeed);
 		}
 
-		if(Input.GetKey(KeyCode.Mouse1))
+		if(Input.GetKey(KeyCode.Mouse2))
 		{
 			mouseX = Input.GetAxis("Mouse X");
 			mouseY = Input.GetAxis("Mouse Y");
 			//myCamera.transform.RotateAround(this.transform.position, new Vector3 (0, mouseX, 0), Time.deltaTime * cameraRotationSpeed);
 			transform.eulerAngles += new  Vector3 (0, mouseX, 0) * Time.deltaTime * cameraRotationSpeed;
 		}
+		if (edgeScrolling) 
+		{
+			//Edge scroll right
+			if (Input.mousePosition.x >= screenWidth * 0.02f) 
+			{
+				transform.Translate(Vector3.right * cameraMoveSpeed, Space.World);
+			}
 
-		//Edge scroll right
-//		if (Input.mousePosition.x >= screenWidth * 0.02f) 
-//		{
-//			transform.Translate(Vector3.right * cameraMoveSpeed, Space.World);
-//		}
-//
-//		//Edge scroll left
-//		if (Input.mousePosition.x <= screenWidth * 0.98f) 
-//		{
-//			transform.Translate(Vector3.left * cameraMoveSpeed, Space.World);
-//		}
-//
-//		//Edge scroll up
-//		if (Input.mousePosition.y >= screenHeight * 0.02f) 
-//		{
-//			transform.Translate(Vector3.forward * cameraMoveSpeed, Space.World);
-//		}
-//
-//		//Edge scroll down
-//		if (Input.mousePosition.y <= screenHeight * 0.98f) 
-//		{
-//			transform.Translate(Vector3.back * cameraMoveSpeed, Space.World);
-//		}
+			//Edge scroll left
+			if (Input.mousePosition.x <= screenWidth * 0.98f) 
+			{
+				transform.Translate(Vector3.left * cameraMoveSpeed, Space.World);
+			}
+
+			//Edge scroll up
+			if (Input.mousePosition.y >= screenHeight * 0.02f) 
+			{
+				transform.Translate(Vector3.forward * cameraMoveSpeed, Space.World);
+			}
+
+			//Edge scroll down
+			if (Input.mousePosition.y <= screenHeight * 0.98f) 
+			{
+				transform.Translate(Vector3.back * cameraMoveSpeed, Space.World);
+			}
+		}
 
 		//Zoom
 		if (Input.GetKey (KeyCode.E)) {
