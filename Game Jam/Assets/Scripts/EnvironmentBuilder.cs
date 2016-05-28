@@ -24,7 +24,7 @@ public class EnvironmentBuilder : MonoBehaviour
 		environmentalObjects = GetComponent<Transform>();
 	}
 
-	public void SpawnObject(GameObject GO, int spawnRate)
+	public void SpawnObject(ResourceNode GO, int spawnRate)
 	{
 		//noiseValueList = new List<float> (terrainWidth * terrainHeight);
 		xRand = Random.Range (-1000, 1000);
@@ -34,7 +34,6 @@ public class EnvironmentBuilder : MonoBehaviour
 		{
 			for (int j = 0; j < terrainWidth; j++)
 			{
-				Debug.Log (terrainWidth);
 				//noiseValueList.Add(Mathf.PerlinNoise(j,i));
 				if(Mathf.PerlinNoise(((float)j + xRand) / 10,((float)i + yRand) / 10) > 0.5f)
 				{
@@ -42,7 +41,10 @@ public class EnvironmentBuilder : MonoBehaviour
 					random.eulerAngles = new Vector3(0,Random.Range(0,360),0);
 
 					Vector2 randomOffset = new Vector2(Random.Range(-3,3),Random.Range(-3,3));
-					GameObject newTree = Instantiate(GO,new Vector3(((j * (xBoundry/terrainWidth) - (xBoundry/2)) + randomOffset.x),0,((i * (yBoundry/terrainHeight) - (xBoundry/2))) + randomOffset.y),random) as GameObject;
+					//ResourceNode newTree = Instantiate(GO,new Vector3(((j * (xBoundry/terrainWidth) - (xBoundry/2)) + randomOffset.x),0,((i * (yBoundry/terrainHeight) - (xBoundry/2))) + randomOffset.y),random);
+					ResourceNode newTree = Instantiate(GO);
+					newTree.Init (ResourceType.Wood, "Tree", 100, new Vector3(((j * (xBoundry/terrainWidth) - (xBoundry/2)) + randomOffset.x),0,((i * (yBoundry/terrainHeight) - (xBoundry/2))) + randomOffset.y));
+					GameManager.Instance.baseObjectList.Add (newTree);
 					newTree.transform.parent = environmentalObjects;
 				}
 			}

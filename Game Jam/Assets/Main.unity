@@ -312,7 +312,7 @@ Transform:
   m_Children:
   - {fileID: 1278782636}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!114 &476563302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -538,7 +538,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 469310, guid: 53a102e1999e7984c9f9f6b331d2cef4, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 53a102e1999e7984c9f9f6b331d2cef4, type: 2}
@@ -902,11 +902,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532ba4f51e8a104488e3da659a8a982c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  villagerGO: {fileID: 11460316, guid: caaec8f24a89d2f45a5fe69ad42fe167, type: 2}
-  resourceNodeGO: {fileID: 11430038, guid: e8403ee4249fe8f4bbe5c2563a72d2ca, type: 2}
-  environmentBuilder: {fileID: 0}
-  environmentArray:
-  - {fileID: 100000, guid: 0ccc03e88bfc20c46b4f5ea02f4da61f, type: 2}
+  villagerGO: {fileID: 11496216, guid: 8bb4e3650b454bd4a9c00f16c3bf4dd4, type: 2}
+  goldMine: {fileID: 11429066, guid: 6f57a464fdad35f49aef0b5cd470832e, type: 2}
+  stoneMine: {fileID: 11471162, guid: 286880ae1ab6bcd4abde5f72bd22e825, type: 2}
+  ironMine: {fileID: 11454856, guid: 828e8b1ab5a97094da47edd60bdd1dc4, type: 2}
+  treeNode: {fileID: 11424684, guid: 0ccc03e88bfc20c46b4f5ea02f4da61f, type: 2}
+  baseObjectList: []
+  environmentBuilder: {fileID: 1310411973}
 --- !u!4 &1310411975
 Transform:
   m_ObjectHideFlags: 0
@@ -918,7 +920,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
 --- !u!1 &1342728559
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,10 +5,8 @@ public enum Relationship { Resource, Friendly, Hostile }
 
 public class BaseObject : MonoBehaviour
 {
-	[SerializeField]
-	protected int objectHealth;
+	public Health objectHealth;
 
-	[SerializeField]
 	protected bool isSelected;
 
 	protected Collider objectCollider;
@@ -18,7 +16,8 @@ public class BaseObject : MonoBehaviour
 	protected void Init(string name, int objectHealth, Vector3 position)
 	{
 		gameObject.name = name;
-		this.objectHealth = objectHealth;
+
+		this.objectHealth.Init (objectHealth);
 		transform.position = position;
 
 		objectCollider = GetComponent<Collider> ();

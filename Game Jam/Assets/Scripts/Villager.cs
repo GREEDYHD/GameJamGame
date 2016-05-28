@@ -6,10 +6,18 @@ public class Villager : Unit
 	[SerializeField]
 	protected int buildSkill;
 
+	public BaseObject tmp;
+
+	Resource[] inventory;
+
+	[SerializeField]
+	int inventoryCapacity;
+
+	[SerializeField]
+	int currentInventory;
+
 	[SerializeField]
 	protected float gatherRate;
-
-	Inventory inventory;
 
 	[SerializeField]
 	float gatherProgress;
@@ -17,18 +25,21 @@ public class Villager : Unit
 	[SerializeField]
 	ResourceNode resourceNode;
 
+	int gatherAmount = 1;
+
 	public void Init(int buildSkill, float gatherRate, int inventorySize, int attackDamage, float attackSpeed, float movementSpeed, string name, int health, Vector3 position)
 	{
 		base.Init (attackDamage, attackSpeed, movementSpeed, name, health, position);
+
 		this.buildSkill = buildSkill;
 		this.gatherRate = gatherRate;
-		inventory = GetComponent<Inventory> ();
-		inventory.Init (50);
-		inventory.AddResourceEntry (Resource.Food, inventorySize);
-		inventory.AddResourceEntry (Resource.Gold, inventorySize);
-		inventory.AddResourceEntry (Resource.Stone, inventorySize);
-		inventory.AddResourceEntry (Resource.Wood, inventorySize);
-		inventory.AddResourceEntry (Resource.Iron, inventorySize);
+
+		inventory = new Resource[5];
+		inventory[0] = new Resource(ResourceType.Food,0);
+		inventory[1] = new Resource(ResourceType.Gold,0);
+		inventory[2] = new Resource(ResourceType.Iron,0);
+		inventory[3] = new Resource(ResourceType.Stone,0);
+		inventory[4] = new Resource(ResourceType.Wood,0);
 	}
 
 	protected void Update()
@@ -67,7 +78,15 @@ public class Villager : Unit
 				gatherProgress += gatherRate * Time.deltaTime;
 				if (gatherProgress > 1.0f)
 				{
-					resourceNode.DepleteResource (10);
+					resourceNode.DepleteResource (gatherAmount);
+					gatherProgress = 0.0f;
+					CollectResource(resourceNode.Resource.Type,gatherAmount);
+					if(CheckInventory())
+					{
+						//MoveTo (NearestResourceDropOff());
+						targetObject = tmp;
+						MoveTo (targetObject);					
+					}
 				}
 				return;
 			}
@@ -76,6 +95,7 @@ public class Villager : Unit
 	
 	protected override void CheckCollision(Collider collider)
 	{
+		Debug.Log (collider.name);
 		BaseObject collidedObject = collider.GetComponent<BaseObject> ();
 		if (collidedObject == targetObject)
 		{
@@ -86,5 +106,49 @@ public class Villager : Unit
 			}
 		}
 		base.CheckCollision (collider);
+	}
+
+	bool CheckInventory()
+	{
+		int tmpInv = 0;
+		for (int i = 0; i < inventory.Length; i++)
+		{
+			tmpInv += inventory[i].Quantity;
+		}
+		currentInventory = tmpInv;
+		tmpInv = 0;
+		if (currentInventory >= inventoryCapacity)
+		{
+			return true;
+		}
+		return false;
+	}
+
+	BaseObject NearestResourceDropOff()
+	{
+		float closestDist = 1.0f;
+		float tempDist = 0.0f;
+		int closestIndex = 0;
+		for (int i = 0; i < GameManager.Instance.baseObjectList.Count; i++)
+		{
+			tempDist = Vector3.Distance(GameManager.Instance.baseObjectList[i].transform.position,transform.position);
+			if(tempDist < closestDist && GameManager.Instance.baseObjectList[i] != this)
+			{
+				closestIndex = i;
+				closestDist = tempDist;
+			}
+		}
+		return GameManager.Instance.baseObjectList [closestIndex];
+	}
+
+	void CollectResource(ResourceType resourceType, int quantity)
+	{
+		for (int i = 0; i < inventory.Length; i++)
+		{
+			if(inventory[i].Type == resourceType)
+			{
+				inventory[i].Increase(quantity);
+			}
+		}
 	}
 }

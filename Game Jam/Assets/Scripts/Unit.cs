@@ -54,6 +54,7 @@ public class Unit : BaseObject
 
 	protected void Update()
 	{
+		base.Update ();
 		RaycastHit hit;
 		if (Input.GetMouseButtonDown(0))
 		{
@@ -131,9 +132,10 @@ public class Unit : BaseObject
 	}
 	
 	//call an action that this unit will perform on another BaseObject
-	void MoveTo(BaseObject target)
+	protected void MoveTo(BaseObject target)
 	{
 		state = State.Moving;
+		navAgent.Resume ();
 		navAgent.SetDestination (target.transform.position);
 	}
 

@@ -19,13 +19,6 @@ public class Building : BaseObject
 		base.Init (name, objectHealth, position);
 	}
 
-	void Awake()
-	{
-		objectHealth = 1; 
-
-
-	}
-
 	// Use this for initialization
 	void Start () 
 	{
@@ -37,7 +30,6 @@ public class Building : BaseObject
 	{
 		if(isPlaced)
 		{
-
 			buildingState = BuildingState.Placed;
 			switchState();
 		}
