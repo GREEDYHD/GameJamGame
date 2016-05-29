@@ -10,15 +10,14 @@ public class BuildingTool : MonoBehaviour {
 	GameObject ghostBuilding;
 	GameObject newBuilding;
 
-	// Use this for initialization
-	void Start () {
-	
+	void Start()
+	{
+		ghostBuilding = null;
 	}
-	
-	// Update is called once per frame
+
 	void Update () 
 	{
-		if (!canBuild) 
+		if (!canBuild && ghostBuilding != null) 
 		{
 			Color ghostColor = new Color(1,0,0,0.5f);
 			ghostBuilding.GetComponent<MeshRenderer> ().material.color = ghostColor;
