@@ -45,8 +45,20 @@ public class GameManager : MonoBehaviour
 		baseObjectList = new List<BaseObject> ();
 		
 		Villager tempVillager = Instantiate(villagerGO);
-		tempVillager.Init (10, 10f, 50, 10, 10, 100, "Villager", 100, new Vector3 (0, 1, 0));
+		tempVillager.Init (10, 10f, 50, 10, 10, 100, "Villager", 100, new Vector3 (10, 1, 0));
 		baseObjectList.Add (tempVillager);
+
+		Villager v1 = Instantiate(villagerGO);
+		v1.Init (10, 10f, 50, 10, 10, 100, "Villager", 100, new Vector3 (0, 1, 10));
+		baseObjectList.Add (v1);
+
+		Villager v2 = Instantiate(villagerGO);
+		v2.Init (10, 10f, 50, 10, 10, 100, "Villager", 100, new Vector3 (20, 1, 20));
+		baseObjectList.Add (v2);
+
+		Villager v3 = Instantiate(villagerGO);
+		v3.Init (10, 10f, 50, 10, 10, 100, "Villager", 100, new Vector3 (5, 1, 0));
+		baseObjectList.Add (v3);
 		
 		ResourceNode gNode = Instantiate (goldMine);
 		gNode.Init (ResourceType.Gold, "GoldMine", 100, new Vector3 (15, 1, 0));

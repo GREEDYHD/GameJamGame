@@ -18,6 +18,8 @@ public class Health : MonoBehaviour
 	public Color thresholdTwo;
 	public Color thresholdThree;
 	//Healthbar UI element
+
+	public bool isSelected;
 	
 	public void Init(int startingHealth, int maxHealth)
 	{
@@ -61,16 +63,10 @@ public class Health : MonoBehaviour
 
 	void UpdateBar()
 	{
-
-		if(healthBar != null)
+		if(healthBar != null || isSelected)
 		{
 			fill.fillAmount = (float)currentHealth / (float)maxHealth;
-			if (currentHealth == maxHealth)
-			{
-				healthBar.enabled = false;
-			} else {
-				healthBar.enabled = true;
-			}
+			ShowBar(currentHealth == maxHealth);
 
 			if( fill.fillAmount > 0.5f)
 			{
@@ -88,5 +84,10 @@ public class Health : MonoBehaviour
 				return;
 			}
 		}
+	}
+
+	public void ShowBar(bool show)
+	{
+		healthBar.enabled = !show;
 	}
 }
