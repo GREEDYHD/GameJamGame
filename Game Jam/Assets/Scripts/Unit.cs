@@ -70,11 +70,6 @@ public class Unit : BaseObject
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			if (Physics.Raycast(ray, out hit))
 			{
-				BaseObject hitObject = hit.collider.GetComponent<BaseObject>();
-
-				targetObject = hitObject;
-				MoveTo(targetObject);
-				
 //				switch(hitObject.CheckRelationship(teamID))
 //				{
 //					case Relationship.Hostile:
@@ -132,11 +127,18 @@ public class Unit : BaseObject
 	}
 	
 	//call an action that this unit will perform on another BaseObject
-	protected void MoveTo(BaseObject target)
+	public void MoveTo(BaseObject target)
 	{
 		state = State.Moving;
 		navAgent.Resume ();
 		navAgent.SetDestination (target.transform.position);
+	}
+
+	public void MoveTo(Vector3 position)
+	{
+		state = State.Moving;
+		navAgent.Resume ();
+		navAgent.SetDestination (position);
 	}
 
 	void OnTriggerEnter(Collider collider)

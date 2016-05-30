@@ -9,6 +9,14 @@ public class BaseObject : MonoBehaviour
 
 	protected bool isSelected;
 
+	public bool IsSelected
+	{
+		get { return isSelected; }
+	}
+
+	[SerializeField]
+	protected GameObject selectedRing;
+
 	protected Collider objectCollider;
 
 	protected int teamID;
@@ -21,6 +29,7 @@ public class BaseObject : MonoBehaviour
 		transform.position = position;
 
 		objectCollider = GetComponent<Collider> ();
+		DeSelect ();
 	}
 
 	protected void Update()
@@ -45,5 +54,21 @@ public class BaseObject : MonoBehaviour
 //		{
 //			return Relationship.Hostile;
 //		}
+	}
+
+	public void Select()
+	{
+		print ("Selected");
+		isSelected = true;
+		objectHealth.isSelected = true;
+		selectedRing.SetActive (true);
+	}
+
+	public void DeSelect()
+	{
+		print ("DeSelected");
+		isSelected = false;		
+		objectHealth.isSelected = false;
+		selectedRing.SetActive (false);
 	}
 }
