@@ -30,7 +30,7 @@ public class BuildingTool : MonoBehaviour {
 			if(Physics.Raycast(ray, out hit))
 			{
 				//ghostBuilding.transform.position = hit.point + new Vector3(0f,2.5f,0f);
-				ghostBuilding.transform.position = hit.point + new Vector3(0f,0f,0f);
+				ghostBuilding.transform.position = hit.point + new Vector3(0f,2.5f,0f);
 			}
 
 			if(Input.GetKeyDown (KeyCode.Mouse0) && canBuild)

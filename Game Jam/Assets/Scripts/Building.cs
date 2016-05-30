@@ -41,8 +41,8 @@ public class Building : BaseObject
 			{
 				case BuildingState.Placed:
 				{
-					buildingCollider = GetComponent<BoxCollider> ();
-					buildingTrigger = transform.GetChild(0).GetComponent<BoxCollider>();
+					buildingCollider = GetComponent<Collider> ();
+					buildingTrigger = transform.GetChild(0).GetComponent<Collider>();
 					buildingCollider.enabled = true;
 					buildingTrigger.enabled = true;
 					return;
@@ -58,8 +58,8 @@ public class Building : BaseObject
 					
 				case BuildingState.Ghost:
 				{
-					buildingCollider = GetComponent<BoxCollider> ();
-					buildingTrigger = transform.GetChild(0).GetComponent<BoxCollider> ();
+					buildingCollider = GetComponent<Collider> ();
+					buildingTrigger = transform.GetChild(0).GetComponent<Collider> ();
 					buildingCollider.enabled = false;
 					buildingTrigger.enabled = false;
 					return;

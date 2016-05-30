@@ -329,6 +329,59 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!1 &143277571
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 143277574}
+  - 114: {fileID: 143277573}
+  - 114: {fileID: 143277572}
+  m_Layer: 0
+  m_Name: UnitControls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &143277572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 143277571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 480b37b63ab65ba4898a5d99eab3d4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectionObject: {fileID: 143277573}
+--- !u!114 &143277573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 143277571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bed9b21941f40649a6786aca581bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedObjects: []
+--- !u!4 &143277574
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 143277571}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .827179313, y: 27.4644547, z: -64.7212067}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
 --- !u!1 &159137296
 GameObject:
   m_ObjectHideFlags: 0
@@ -940,7 +993,7 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -960,8 +1013,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 946651beb914a404abd08bbb7b9d071e, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -985,8 +1038,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a1ef88423263e84b92e5f7a79da48c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipName: 
-  tipText: 
+  tipName: Barracks
+  tipText: Enables the creation of militia units
 --- !u!114 &207762020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1015,8 +1068,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 2079188722}
-          m_MethodName: UpdateToolText
+        - m_Target: {fileID: 207762019}
+          m_MethodName: UpdateToolTip
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2382,8 +2435,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: ca57cb66d15ea23459ece9f900164921, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3171,8 +3224,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 781a4da82711c684a82759dea442e783, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3196,8 +3249,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a1ef88423263e84b92e5f7a79da48c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipName: 
-  tipText: 
+  tipName: Farmland
+  tipText: Farmland produces food resources when worked
 --- !u!114 &509042731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3226,8 +3279,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 2079188722}
-          m_MethodName: UpdateToolText
+        - m_Target: {fileID: 509042730}
+          m_MethodName: UpdateToolTip
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3441,8 +3494,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a1ef88423263e84b92e5f7a79da48c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipName: 
-  tipText: 
+  tipName: Church
+  tipText: Enables the creation of priest units
 --- !u!114 &621084134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3471,8 +3524,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 2079188722}
-          m_MethodName: UpdateToolText
+        - m_Target: {fileID: 621084133}
+          m_MethodName: UpdateToolTip
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3807,8 +3860,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a1ef88423263e84b92e5f7a79da48c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipName: 
-  tipText: 
+  tipName: Walls
+  tipText: Walls can be places as a defensive structure
 --- !u!114 &648043789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3837,8 +3890,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 2079188722}
-          m_MethodName: UpdateToolText
+        - m_Target: {fileID: 648043788}
+          m_MethodName: UpdateToolTip
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -4610,7 +4663,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 469310, guid: 53a102e1999e7984c9f9f6b331d2cef4, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 53a102e1999e7984c9f9f6b331d2cef4, type: 2}
@@ -5140,8 +5193,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 724687fbbafebb8499a2bed5c74c4242, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5440,7 +5493,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 441604, guid: 5e35ca1663d0dba4eb536af2c21f18b8, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2012390, guid: 5e35ca1663d0dba4eb536af2c21f18b8, type: 2}
       propertyPath: m_NormalizedViewPortRect.x
@@ -7680,8 +7733,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availableBuildings:
-  - {fileID: 159612, guid: d931221a8a23ee5438fc97ff9448a5d7, type: 2}
-  - {fileID: 129202, guid: 7dcd8a169d9498a4293cf1c910da3f7c, type: 2}
+  - {fileID: 126872, guid: d931221a8a23ee5438fc97ff9448a5d7, type: 2}
+  - {fileID: 131398, guid: 7dcd8a169d9498a4293cf1c910da3f7c, type: 2}
+  - {fileID: 111106, guid: 8e4acc3e49948b0488c27d1d4967c52f, type: 2}
+  - {fileID: 142594, guid: a1c1061a1f2821f48895c2cee286281a, type: 2}
   isBuilding: 0
   canBuild: 0
   selectedBuilding: 0
@@ -9106,8 +9161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a1ef88423263e84b92e5f7a79da48c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipName: 
-  tipText: 
+  tipName: Watchtowers
+  tipText: A watchtower will attack units at range that enter it's perimeter
 --- !u!114 &1467152989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9136,8 +9191,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 2079188722}
-          m_MethodName: UpdateToolText
+        - m_Target: {fileID: 1467152988}
+          m_MethodName: UpdateToolTip
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -9799,8 +9854,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 650717ee0c8068541a3900b1f17e3f3a, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -9824,8 +9879,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a1ef88423263e84b92e5f7a79da48c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipName: 
-  tipText: 
+  tipName: Stop
+  tipText: Stops the current action
 --- !u!114 &1546530445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9854,8 +9909,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 2079188722}
-          m_MethodName: UpdateToolText
+        - m_Target: {fileID: 1546530444}
+          m_MethodName: UpdateToolTip
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -10542,8 +10597,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a1ef88423263e84b92e5f7a79da48c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipName: 
-  tipText: 
+  tipName: Stable
+  tipText: Enabled the construction of cavalry units
 --- !u!114 &1665749132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10572,8 +10627,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 2079188722}
-          m_MethodName: UpdateToolText
+        - m_Target: {fileID: 1665749131}
+          m_MethodName: UpdateToolTip
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -10732,8 +10787,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a1ef88423263e84b92e5f7a79da48c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipName: 
-  tipText: 
+  tipName: Blacksmith
+  tipText: Research building
 --- !u!114 &1677424262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10762,8 +10817,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 2079188722}
-          m_MethodName: UpdateToolText
+        - m_Target: {fileID: 1677424261}
+          m_MethodName: UpdateToolTip
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -10877,7 +10932,7 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -10897,8 +10952,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: db411765c43cff442a4a5d59be903b3b, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -10922,8 +10977,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a1ef88423263e84b92e5f7a79da48c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipName: 
-  tipText: 
+  tipName: Stockpile
+  tipText: This holds a limited amount of all types of resources
 --- !u!114 &1708301862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10952,8 +11007,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 2079188722}
-          m_MethodName: UpdateToolText
+        - m_Target: {fileID: 1708301861}
+          m_MethodName: UpdateToolTip
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -13306,8 +13361,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a1ef88423263e84b92e5f7a79da48c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipName: 
-  tipText: 
+  tipName: Workshop
+  tipText: Research building
 --- !u!114 &2123778153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13336,8 +13391,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 2079188722}
-          m_MethodName: UpdateToolText
+        - m_Target: {fileID: 2123778152}
+          m_MethodName: UpdateToolTip
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
