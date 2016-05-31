@@ -12,6 +12,7 @@ public class Building : BaseObject
 	public bool isPlaced;
 	public bool underConstruction;
 	public bool buildingComplete;
+	private float buildingSpeed = 2f; 
 
 
 	public void Init(string name, int objectHealth, Vector3 position)
@@ -33,6 +34,18 @@ public class Building : BaseObject
 			buildingState = BuildingState.Placed;
 			switchState();
 		}
+
+		if(underConstruction)
+		{
+			buildingState = BuildingState.Build;
+			switchState();
+		}
+
+		if(buildingComplete)
+		{
+			buildingState = BuildingState.FinishedBuilding;
+			switchState();
+		}
 	}
 
 	void switchState()
@@ -49,6 +62,7 @@ public class Building : BaseObject
 				}
 				case BuildingState.Build:
 				{
+					
 					return;
 				}
 				case BuildingState.FinishedBuilding:

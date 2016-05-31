@@ -10,6 +10,7 @@ public class BuildingTool : MonoBehaviour {
 	GameObject ghostBuilding;
 	GameObject newBuilding;
 
+
 	void Start()
 	{
 		ghostBuilding = null;
@@ -17,9 +18,25 @@ public class BuildingTool : MonoBehaviour {
 
 	void Update () 
 	{
+		if (Input.mousePosition.y > 301f) 
+		{
+			canBuild = true;
+		}
+
+		if (Input.mousePosition.y < 301f) 
+		{
+			canBuild = false;
+		}
+
 		if (!canBuild && ghostBuilding != null) 
 		{
 			Color ghostColor = new Color(1,0,0,0.5f);
+			ghostBuilding.GetComponent<MeshRenderer> ().material.color = ghostColor;
+		}
+
+		if (canBuild) 
+		{
+			Color ghostColor = new Color(0,0,1,0.5f);
 			ghostBuilding.GetComponent<MeshRenderer> ().material.color = ghostColor;
 		}
 
