@@ -6,19 +6,29 @@ public class Health : MonoBehaviour
 {
 	[SerializeField]
 	int currentHealth;
-
+	
 	[SerializeField]
 	int maxHealth;
 	
+	public int CurrentHealth 
+	{	
+		get {return currentHealth; }
+	}
+	
+	public int MaxHealth
+	{
+		get { return maxHealth; }
+	}
+	
 	public Image fill;
-
+	
 	public Canvas healthBar;
-
+	
 	public Color thresholdOne;
 	public Color thresholdTwo;
 	public Color thresholdThree;
 	//Healthbar UI element
-
+	
 	public bool isSelected;
 	
 	public void Init(int startingHealth, int maxHealth)
@@ -27,18 +37,18 @@ public class Health : MonoBehaviour
 		this.maxHealth = maxHealth;
 		UpdateBar ();
 	}
-
+	
 	public void Init(int maxHealth) // Use if starts with max Health
 	{
 		this.currentHealth = maxHealth;
 		this.maxHealth = maxHealth;
 		UpdateBar ();
 	}
-
+	
 	public void TakeDamage(int damage)
 	{
 		currentHealth -= damage;
-
+		
 		//Update UI element
 		if (currentHealth <= 0)
 		{
@@ -47,7 +57,7 @@ public class Health : MonoBehaviour
 		}
 		UpdateBar ();
 	}
-
+	
 	public void Heal(int amount)
 	{
 		currentHealth += amount;
@@ -60,14 +70,14 @@ public class Health : MonoBehaviour
 		}
 		UpdateBar ();
 	}
-
+	
 	void UpdateBar()
 	{
 		if(healthBar != null || isSelected)
 		{
 			fill.fillAmount = (float)currentHealth / (float)maxHealth;
 			ShowBar(currentHealth == maxHealth);
-
+			
 			if( fill.fillAmount > 0.5f)
 			{
 				fill.color = thresholdOne;
@@ -85,7 +95,7 @@ public class Health : MonoBehaviour
 			}
 		}
 	}
-
+	
 	public void ShowBar(bool show)
 	{
 		healthBar.enabled = !show;

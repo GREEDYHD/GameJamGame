@@ -5,14 +5,16 @@ using System.Collections.Generic;
 public class Selection : MonoBehaviour
 {
 	public List<BaseObject> selectedObjects;
-
+	
 	BaseObject newSelectedObject;
-
+	
+	public FocusOn unitCamera;
+	
 	void Start()
 	{
 		selectedObjects = new List<BaseObject> ();
 	}
-
+	
 	void Update ()
 	{
 		if (Input.GetMouseButtonDown (0))
@@ -32,21 +34,18 @@ public class Selection : MonoBehaviour
 						}
 						else
 						{
-							selectedObjects.Add(newSelectedObject);
-							newSelectedObject.Select();
+							SelectObject(newSelectedObject);
 						}
 					}
 					else
 					{
 						DeselectSelected();	
-						newSelectedObject.Select();
-						selectedObjects.Add(newSelectedObject);
 					}
 				}
 			}
 		}
 	}
-
+	
 	void DeselectSelected()
 	{
 		for (int i = 0; i < selectedObjects.Count; i++)
@@ -54,5 +53,12 @@ public class Selection : MonoBehaviour
 			selectedObjects[i].DeSelect();
 		}
 		selectedObjects.Clear ();
+	}
+	
+	void SelectObject(BaseObject selectObject)
+	{
+		selectObject.Select();
+		selectedObjects.Add(selectObject);
+		unitCamera.SetFocusObject (selectedObjects[0]);
 	}
 }

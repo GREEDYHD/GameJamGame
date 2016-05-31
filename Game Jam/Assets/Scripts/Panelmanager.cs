@@ -14,7 +14,6 @@ public class Panelmanager : MonoBehaviour {
 	//###################################################
 
 	//Selected panel variables
-	public Image unitImage;
 	public Text unitName;
 	public Text inventoryText;
 	public Image healthFill;
@@ -54,9 +53,8 @@ public class Panelmanager : MonoBehaviour {
 		availablePanels [panelNumber].SetActive (true);
 	}
 
-	public void updateInfoBox(Image image, string name, int currentCap, int maxCap, int currentHealth, int maxHealth)
+	public void UpdateInfoBox(string name, int currentCap, int maxCap, int currentHealth, int maxHealth)
 	{
-		unitImage = image;
 		unitName.text = name;
 		inventoryText.text = "Inventory : " + currentCap + "/" + maxCap;
 

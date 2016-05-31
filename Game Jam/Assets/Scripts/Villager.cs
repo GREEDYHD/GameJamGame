@@ -5,35 +5,45 @@ public class Villager : Unit
 {
 	[SerializeField]
 	protected int buildSkill;
-
+	
 	public BaseObject tmp;
-
+	
 	Resource[] inventory;
-
+	
 	[SerializeField]
 	int inventoryCapacity;
-
+	
 	[SerializeField]
 	int currentInventory;
-
+	
+	public int InventoryCapacity
+	{
+		get { return inventoryCapacity; }
+	}
+	
+	public int CurrentInventory
+	{
+		get { return currentInventory; }
+	}
+	
 	[SerializeField]
 	protected float gatherRate;
-
+	
 	[SerializeField]
 	float gatherProgress;
-
+	
 	[SerializeField]
 	ResourceNode resourceNode;
-
+	
 	int gatherAmount = 1;
-
+	
 	public void Init(int buildSkill, float gatherRate, int inventorySize, int attackDamage, float attackSpeed, float movementSpeed, string name, int health, Vector3 position)
 	{
 		base.Init (attackDamage, attackSpeed, movementSpeed, name, health, position);
-
+		
 		this.buildSkill = buildSkill;
 		this.gatherRate = gatherRate;
-
+		
 		inventory = new Resource[5];
 		inventory[0] = new Resource(ResourceType.Food,0);
 		inventory[1] = new Resource(ResourceType.Gold,0);
@@ -41,55 +51,55 @@ public class Villager : Unit
 		inventory[3] = new Resource(ResourceType.Stone,0);
 		inventory[4] = new Resource(ResourceType.Wood,0);
 	}
-
+	
 	protected void Update()
 	{
 		base.Update ();
-
+		
 		if (GameManager.IsPaused)
 		{
 			
 		}
 	}
-
+	
 	protected override void StateBehaviour()
 	{
 		switch (state)
 		{
 		case State.Idle:
-			{
-				//Play idle animation
-				return;
-			}
+		{
+			//Play idle animation
+			return;
+		}
 		case State.Moving:
-			{
-				//Play moving animation
-				//Move towards target
-				return;
-			}
+		{
+			//Play moving animation
+			//Move towards target
+			return;
+		}
 		case State.Attacking:
-			{
-				//Attack
-				return;
-			}
+		{
+			//Attack
+			return;
+		}
 		case State.Gathering:
+		{
+			resourceNode = targetObject.GetComponent<ResourceNode> ();//TODO: Remove this
+			gatherProgress += gatherRate * Time.deltaTime;
+			if (gatherProgress > 1.0f)
 			{
-				resourceNode = targetObject.GetComponent<ResourceNode> ();//TODO: Remove this
-				gatherProgress += gatherRate * Time.deltaTime;
-				if (gatherProgress > 1.0f)
+				resourceNode.DepleteResource (gatherAmount);
+				gatherProgress = 0.0f;
+				CollectResource(resourceNode.Resource.Type,gatherAmount);
+				if(CheckInventory())
 				{
-					resourceNode.DepleteResource (gatherAmount);
-					gatherProgress = 0.0f;
-					CollectResource(resourceNode.Resource.Type,gatherAmount);
-					if(CheckInventory())
-					{
-						//MoveTo (NearestResourceDropOff());
-						targetObject = tmp;
-						MoveTo (targetObject);					
-					}
+					//MoveTo (NearestResourceDropOff());
+					targetObject = tmp;
+					MoveTo (targetObject);					
 				}
-				return;
 			}
+			return;
+		}
 		}
 	}
 	
@@ -101,13 +111,13 @@ public class Villager : Unit
 		{
 			if (collidedObject.GetComponent<ResourceNode>())
 			{
-				navAgent.Stop ();
 				state = State.Gathering;
+				navAgent.Stop ();
 			}
 		}
 		base.CheckCollision (collider);
 	}
-
+	
 	bool CheckInventory()
 	{
 		int tmpInv = 0;
@@ -123,7 +133,7 @@ public class Villager : Unit
 		}
 		return false;
 	}
-
+	
 	BaseObject NearestResourceDropOff()
 	{
 		float closestDist = 1.0f;
@@ -140,7 +150,7 @@ public class Villager : Unit
 		}
 		return GameManager.Instance.baseObjectList [closestIndex];
 	}
-
+	
 	void CollectResource(ResourceType resourceType, int quantity)
 	{
 		for (int i = 0; i < inventory.Length; i++)
