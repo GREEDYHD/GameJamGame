@@ -14,6 +14,8 @@ GameObject:
   - 208: {fileID: 20859926}
   - 114: {fileID: 11462994}
   - 82: {fileID: 8280202}
+  - 114: {fileID: 11442412}
+  - 114: {fileID: 11447866}
   m_Layer: 0
   m_Name: House
   m_TagString: Untagged
@@ -101,7 +103,7 @@ BoxCollider:
   m_GameObject: {fileID: 168684}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -186,6 +188,31 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!114 &11442412
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 131398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a1ef88423263e84b92e5f7a79da48c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipName: 
+  tipText: 
+--- !u!114 &11447866
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 131398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delegates: []
 --- !u!114 &11462994
 MonoBehaviour:
   m_ObjectHideFlags: 1
