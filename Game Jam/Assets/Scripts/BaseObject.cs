@@ -61,6 +61,7 @@ public class BaseObject : MonoBehaviour
 		print ("Selected");
 		isSelected = true;
 		objectHealth.isSelected = true;
+		objectHealth.ShowBar (true);
 		selectedRing.SetActive (true);
 	}
 

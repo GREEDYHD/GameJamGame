@@ -55,22 +55,13 @@ public class Unit : BaseObject
 	protected void Update()
 	{
 		base.Update ();
-		RaycastHit hit;
-		if (Input.GetMouseButtonDown(0))
-		{
-			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			if (Physics.Raycast(ray, out hit))
-			{
-				state = State.Moving;
-			}
-		}
-		
+
+		StateBehaviour();
+
 		if(GameManager.IsDebug)
 		{
 			Debug.DrawLine(transform.position,targetObject.gameObject.transform.position);
 		}
-		
-		StateBehaviour();
 		
 		if (GameManager.IsPaused)
 		{
@@ -82,27 +73,27 @@ public class Unit : BaseObject
 	{
 		switch (state)
 		{
-		case State.Idle:
-		{
-			//Play idle animation
-			return;
-		}
-		case State.Moving:
-		{
-			if(previousState != State.Moving)
+			case State.Idle:
 			{
-				MoveTo(targetObject);
-				previousState = State.Moving;
+				//Play idle animation
+				return;
 			}
-			//Play moving animation
-			//Move towards target
-			return;
-		}
-		case State.Attacking:
-		{
-			//Attack
-			return;
-		}
+			case State.Moving:
+			{
+				if(previousState != State.Moving)
+				{
+					MoveTo(targetObject);
+					previousState = State.Moving;
+				}
+				//Play moving animation
+				//Move towards target
+				return;
+			}
+			case State.Attacking:
+			{
+				//Attack
+				return;
+			}
 		}
 	}
 	

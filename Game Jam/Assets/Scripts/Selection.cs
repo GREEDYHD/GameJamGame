@@ -39,9 +39,18 @@ public class Selection : MonoBehaviour
 					}
 					else
 					{
-						DeselectSelected();	
+						DeselectSelected();
+						SelectObject(newSelectedObject);
 					}
 				}
+				else
+				{
+					DeselectSelected();
+				}
+			}
+			else
+			{
+				DeselectSelected();
 			}
 		}
 	}

@@ -73,10 +73,10 @@ public class Health : MonoBehaviour
 	
 	void UpdateBar()
 	{
-		if(healthBar != null || isSelected)
+		if(healthBar != null)
 		{
 			fill.fillAmount = (float)currentHealth / (float)maxHealth;
-			ShowBar(currentHealth == maxHealth);
+			ShowBar(currentHealth == maxHealth || isSelected);
 			
 			if( fill.fillAmount > 0.5f)
 			{
@@ -98,6 +98,9 @@ public class Health : MonoBehaviour
 	
 	public void ShowBar(bool show)
 	{
-		healthBar.enabled = !show;
+		if (healthBar != null)
+		{
+			healthBar.enabled = !show;
+		}
 	}
 }

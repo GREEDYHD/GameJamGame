@@ -64,42 +64,43 @@ public class Villager : Unit
 	
 	protected override void StateBehaviour()
 	{
+		print (33);
 		switch (state)
 		{
-		case State.Idle:
-		{
-			//Play idle animation
-			return;
-		}
-		case State.Moving:
-		{
-			//Play moving animation
-			//Move towards target
-			return;
-		}
-		case State.Attacking:
-		{
-			//Attack
-			return;
-		}
-		case State.Gathering:
-		{
-			resourceNode = targetObject.GetComponent<ResourceNode> ();//TODO: Remove this
-			gatherProgress += gatherRate * Time.deltaTime;
-			if (gatherProgress > 1.0f)
+			case State.Idle:
 			{
-				resourceNode.DepleteResource (gatherAmount);
-				gatherProgress = 0.0f;
-				CollectResource(resourceNode.Resource.Type,gatherAmount);
-				if(CheckInventory())
-				{
-					//MoveTo (NearestResourceDropOff());
-					targetObject = tmp;
-					MoveTo (targetObject);					
-				}
+				//Play idle animation
+				return;
 			}
-			return;
-		}
+			case State.Moving:
+			{
+				//Play moving animation
+				//Move towards target
+				return;
+			}
+			case State.Attacking:
+			{
+				//Attack
+				return;
+			}
+			case State.Gathering:
+			{
+				resourceNode = targetObject.GetComponent<ResourceNode> ();//TODO: Remove this
+				gatherProgress += gatherRate * Time.deltaTime;
+				if (gatherProgress > 1.0f)
+				{
+					resourceNode.DepleteResource (gatherAmount);
+					gatherProgress = 0.0f;
+					CollectResource(resourceNode.Resource.Type,gatherAmount);
+					if(CheckInventory())
+					{
+						MoveTo (NearestResourceDropOff());
+						//targetObject = tmp;
+						//MoveTo (targetObject);					
+					}
+				}
+				return;
+			}
 		}
 	}
 	

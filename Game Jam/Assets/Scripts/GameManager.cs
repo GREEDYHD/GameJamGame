@@ -75,9 +75,9 @@ public class GameManager : MonoBehaviour
 		
 		environmentBuilder = GetComponent<EnvironmentBuilder> ();
 		
-		environmentBuilder.Init (50,50);
-		environmentBuilder.SpawnObjectGreaterThan (treeNode,0.5f);
-		environmentBuilder.SpawnObjectLessThan (goldMine, 0.1f);
+//		environmentBuilder.Init (50,50);
+//		environmentBuilder.SpawnObjectGreaterThan (treeNode,0.5f);
+//		environmentBuilder.SpawnObjectLessThan (goldMine, 0.1f);
 
 		//Create resource nodes ect.
 		//Create a town center
